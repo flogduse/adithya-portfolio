@@ -1,0 +1,110 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 7423 >>
+stream
+BT /Helvetica-Bold 22 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 794.00 Tm (ADITHYA RAJESH) Tj ET
+BT /Helvetica 10 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 773.00 Tm (AI / ML Developer · B.Tech CSE '29) Tj ET
+BT /Helvetica 9 Tf 0.35 0.35 0.35 rg 1 0 0 1 48.00 758.00 Tm (adithya.0987@gmail.com   ·   github.com/flogduse   ·   linkedin.com/in/adithya-rajesh-4486453a2   ·   Trivandrum, Kerala, India) Tj ET
+0.7 0.07 0.07 0.07 RG 48 751.00 m 547 751.00 l 1.4 w S
+BT /Helvetica-Bold 11.5 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 730.00 Tm (SUMMARY) Tj ET
+0.7 0.45 0.45 0.45 RG 48 721.00 m 547 721.00 l 0.8 w S
+BT /Helvetica 9.4 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 718.00 Tm (B.Tech Computer Science student \(Class of 2029\) building intelligent systems across machine) Tj ET
+BT /Helvetica 9.4 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 705.60 Tm (learning, computer vision, robotics and the web. Shipped a retrieval-augmented chatbot with) Tj ET
+BT /Helvetica 9.4 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 693.20 Tm (citations, an NLP career-matching platform during an IBM internship, and gesture-driven) Tj ET
+BT /Helvetica 9.4 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 680.80 Tm (interfaces. Comfortable end-to-end: data ? model ? API ? interface.) Tj ET
+BT /Helvetica-Bold 11.5 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 654.40 Tm (PROJECTS) Tj ET
+0.7 0.45 0.45 0.45 RG 48 645.40 m 547 645.40 l 0.8 w S
+BT /Helvetica-Bold 10.6 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 632.40 Tm (RAG Campus Assistant) Tj ET
+BT /Helvetica-Oblique 8.6 Tf 0.35 0.35 0.35 rg 1 0 0 1 252.88 633.90 Tm (Python · FastAPI · ChromaDB · sentence-transformers · SSE) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 620.90 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 620.90 Tm (Retrieval-augmented chatbot that answers campus questions strictly from institutional PDFs,) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 609.00 Tm (with numbered inline citations.) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 597.10 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 597.10 Tm (Built the full pipeline: PDF extraction ? overlap chunking ? MiniLM embeddings ? ChromaDB) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 585.20 Tm (cosine search ? greedy-MMR diversification.) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 573.30 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 573.30 Tm (Multi-provider LLM layer \(Groq/OpenAI/Ollama\) with token-level Server-Sent-Events) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 561.40 Tm (streaming; retrieval-only fallback mode.) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 549.50 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 549.50 Tm (Ships with a 20-test pytest suite covering chunking, metadata coercion and the streaming) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 537.60 Tm (API contract.) Tj ET
+BT /Helvetica-Bold 10.6 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 512.70 Tm (NexaPath ? AI Career Copilot) Tj ET
+BT /Helvetica-Oblique 8.6 Tf 0.35 0.35 0.35 rg 1 0 0 1 397.36 514.20 Tm (Python · NLP · TF-IDF · Flask) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 501.20 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 501.20 Tm (Career-copilot platform for Tier-2/3 India, built during an IBM SkillsBuild internship.) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 489.30 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 489.30 Tm (TF-IDF + cosine-similarity matching engine aligning candidate profiles with opportunities;) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 477.40 Tm (aligned to SDG 4/8/10.) Tj ET
+BT /Helvetica-Bold 10.6 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 452.50 Tm (Synth-Vision ? Gesture Interfaces) Tj ET
+BT /Helvetica-Oblique 8.6 Tf 0.35 0.35 0.35 rg 1 0 0 1 407.68 454.00 Tm (Python · OpenCV · MediaPipe) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 441.00 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 441.00 Tm (Real-time hand-tracking interface manipulating physics-based UI elements purely through) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 429.10 Tm (gestures.) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 417.20 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 417.20 Tm (Currently expanding into a MediaPipe + pynput desktop control app \(volume/scroll/slides\).) Tj ET
+BT /Helvetica-Bold 10.6 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 392.30 Tm (DSA Python) Tj ET
+BT /Helvetica-Oblique 8.6 Tf 0.35 0.35 0.35 rg 1 0 0 1 464.44 393.80 Tm (Python · Jupyter) Tj ET
+BT /Helvetica 9.3 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 380.80 Tm (?) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 380.80 Tm (Curated data-structures &amp; algorithms collection with Jupyter-based analysis ? the) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 368.90 Tm (foundation layer for all ML work.) Tj ET
+BT /Helvetica-Bold 11.5 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 340.00 Tm (SKILLS) Tj ET
+0.7 0.45 0.45 0.45 RG 48 331.00 m 547 331.00 l 0.8 w S
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 328.00 Tm (LANGUAGES) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 328.00 Tm (Python, C/C++, JavaScript) Tj ET
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 314.50 Tm (ML / DATA) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 314.50 Tm (Pandas, NumPy, scikit-learn, model training &amp; evaluation) Tj ET
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 301.00 Tm (COMPUTER VISION) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 301.00 Tm (OpenCV, MediaPipe, real-time tracking) Tj ET
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 287.50 Tm (BACKEND / WEB) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 287.50 Tm (FastAPI, Flask, Node.js, REST APIs, SSE streaming) Tj ET
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 274.00 Tm (HARDWARE / ROBOTICS) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 274.00 Tm (Arduino, sensors, actuator logic) Tj ET
+BT /Helvetica-Bold 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 260.50 Tm (TOOLS) Tj ET
+BT /Helvetica 9.3 Tf 0.07 0.07 0.07 rg 1 0 0 1 168.00 260.50 Tm (Git/GitHub, Jupyter, pytest, ChromaDB) Tj ET
+BT /Helvetica-Bold 11.5 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 233.00 Tm (EDUCATION) Tj ET
+0.7 0.45 0.45 0.45 RG 48 224.00 m 547 224.00 l 0.8 w S
+BT /Helvetica-Bold 10 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 221.00 Tm (B.Tech, Computer Science and Engineering) Tj ET
+BT /Helvetica 9.2 Tf 0.07 0.07 0.07 rg 1 0 0 1 48.00 208.00 Tm (TKM College of Engineering, Kollam) Tj ET
+BT /Helvetica 9.2 Tf 0.35 0.35 0.35 rg 1 0 0 1 212.12 208.00 Tm (2025 ? 2029 \(expected\) · APJ Abdul Kalam Technological University) Tj ET
+BT /Helvetica-Bold 11.5 Tf 0.75 0.15 0.08 rg 1 0 0 1 48.00 181.00 Tm (ADDITIONAL) Tj ET
+0.7 0.45 0.45 0.45 RG 48 172.00 m 547 172.00 l 0.8 w S
+BT /Helvetica 9.1 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 170.00 Tm (?) Tj ET
+BT /Helvetica 9.1 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 170.00 Tm (IBM SkillsBuild internship ? AI career-platform track) Tj ET
+BT /Helvetica 9.1 Tf 0.75 0.15 0.08 rg 1 0 0 1 62.00 158.30 Tm (?) Tj ET
+BT /Helvetica 9.1 Tf 0.07 0.07 0.07 rg 1 0 0 1 72.00 158.30 Tm (Build-in-public roadmap: sign-language translator and a LoRA fine-tuned Manglish LLM) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000267 00000 n 
+0000007742 00000 n 
+0000007817 00000 n 
+0000007887 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+7965
+%%EOF
