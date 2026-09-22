@@ -3,7 +3,9 @@
 Usage:  python scripts/make_resume.py
 Output: public/resume.pdf  (activates the RESUME button on the site)
 
-Design: single column, typographic, ATS-parseable (real text, no images).
+Layout modeled on Adithya's reference DOCX (July 2026):
+header / objective / education / internship experience / projects /
+technical skills / certifications. Single column, ATS-parseable.
 """
 import html
 import sys
@@ -15,11 +17,11 @@ from resume_data import RESUME  # noqa: E402
 OUT = Path(__file__).resolve().parent.parent / "public" / "resume.pdf"
 
 PAGE_W, PAGE_H = 595, 842  # A4 at 72dpi
-MARGIN = 48
+MARGIN = 46
 INK = (0.07, 0.07, 0.07)
-MUTED = (0.35, 0.35, 0.35)
+MUTED = (0.38, 0.38, 0.38)
 ACCENT = (0.75, 0.15, 0.08)
-LINE = (0.8, 0.8, 0.8)
+RULE = (0.55, 0.55, 0.55)
 
 BOLD = "Helvetica-Bold"
 REG = "Helvetica"
@@ -35,8 +37,7 @@ class PDF:
         return html.escape(s, quote=False).replace("(", "\\(").replace(")", "\\)")
 
     def width(self, text: str, size: float, font: str = REG) -> float:
-        # Helvetica avg width factors (good enough for our wrapping)
-        factor = 0.56 if font == REG else 0.60
+        factor = 0.55 if font == REG else 0.60
         return len(text) * size * factor
 
     def wrap(self, text: str, size: float, max_w: float, font: str = REG):
@@ -60,10 +61,10 @@ class PDF:
             f"BT /{font} {size} Tf {r} {g} {b} rg 1 0 0 1 {x + dx:.2f} {self.y + dy:.2f} Tm ({self.esc(text)}) Tj ET"
         )
 
-    def rule(self, gap: float = 6, thickness: float = 0.7, color=LINE):
+    def rule(self, gap: float, thickness: float = 0.8, color=RULE):
         self.y -= gap
-        self.parts.append(f"0.7 {color[0]} {color[1]} {color[2]} RG {MARGIN} {self.y:.2f} m {PAGE_W - MARGIN} {self.y:.2f} l {thickness} w S")
-        self.y -= gap
+        self.parts.append(f"{color[0]} {color[1]} {color[2]} RG {MARGIN} {self.y:.2f} m {PAGE_W - MARGIN} {self.y:.2f} l {thickness} w S")
+        self.y -= 2
 
     def space(self, n: float):
         self.y -= n
@@ -78,12 +79,10 @@ class PDF:
         objs = []
         objs.append(b"<< /Type /Catalog /Pages 2 0 R >>")
         objs.append(b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>")
-        objs.append(
-            (
-                f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {PAGE_W} {PAGE_H}] "
-                f"/Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> >>"
-            ).encode()
-        )
+        objs.append((
+            f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {PAGE_W} {PAGE_H}] "
+            f"/Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> >>"
+        ).encode())
         objs.append(b"<< /Length " + str(len(stream)).encode() + b" >>\nstream\n" + stream + b"\nendstream")
         objs.append(b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>")
         objs.append(b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>")
@@ -98,95 +97,106 @@ class PDF:
         out += b"xref\n0 " + str(len(objs) + 1).encode() + b"\n0000000000 65535 f \n"
         for off in offsets[1:]:
             out += f"{off:010d} 00000 n \n".encode()
-        out += (
-            f"trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{xref_pos}\n%%EOF"
-        ).encode()
+        out += (f"trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{xref_pos}\n%%EOF").encode()
         return bytes(out)
 
 
-def h2(p: PDF, text: str):
-    p.ensure(46)
-    p.space(14)
-    p.txt(MARGIN, 11.5, text.upper(), BOLD, ACCENT)
-    p.space(6)
-    p.rule(gap=3, thickness=0.8, color=(0.45, 0.45, 0.45))
+def section(p: PDF, title: str):
+    p.space(11)
+    p.txt(MARGIN, 11, title.upper(), BOLD, ACCENT)
+    p.rule(gap=3.5, thickness=0.9)
 
 
-def bullet(p: PDF, text: str, size: float = 9.3, indent: float = 14):
-    p.ensure(30)
-    p.txt(MARGIN + indent, size, "•", REG, ACCENT, dy=1)
-    max_w = PAGE_W - MARGIN * 2 - indent - 10
-    lines = p.wrap(text, size, max_w)
-    for i, line in enumerate(lines):
-        p.ensure(size + 3)
-        if i == 0:
-            p.txt(MARGIN + indent + 10, size, line, REG, INK, dy=1)
-        else:
-            p.txt(MARGIN + indent + 10, size, line, REG, INK, dy=1)
-        p.space(size + 2.6)
+def bullet(p: PDF, text: str, size: float = 9.2):
+    p.ensure(size + 4)
+    p.txt(MARGIN + 2, size, "\u2022", REG, ACCENT, dy=0.8)
+    for line in p.wrap(text, size, PAGE_W - MARGIN * 2 - 12):
+        p.ensure(size + 2.5)
+        p.txt(MARGIN + 12, size, line, REG, INK, dy=0.8)
+        p.space(size + 2.4)
 
 
-def project(p: PDF, pr: dict):
-    p.ensure(58)
-    p.space(10)
-    p.txt(MARGIN, 10.6, pr["name"], BOLD, INK)
-    p.txt(PAGE_W - MARGIN, 8.6, pr["stack"], OBL, MUTED, dx=-p.width(pr["stack"], 8.6, OBL), dy=1.5)
-    p.space(12.5)
-    for b in pr["bullets"]:
-        bullet(p, b)
-    p.space(2)
+def entry_header(p: PDF, left: str, left_size: float, right: str, right_size: float,
+                 left_font: str = BOLD, right_color=MUTED):
+    """Left-aligned title with right-aligned meta on the same baseline."""
+    p.ensure(left_size + 5)
+    p.txt(MARGIN, left_size, left, left_font, INK)
+    if right:
+        w = p.width(right, right_size)
+        p.txt(PAGE_W - MARGIN, right_size, right, REG, right_color, dx=-w, dy=0.6)
+    p.space(left_size + 2.6)
 
 
 def main():
     p = PDF()
 
-    # --- header ---
-    p.txt(MARGIN, 22, RESUME["name"], BOLD, INK)
-    p.space(21)
-    p.txt(MARGIN, 10, RESUME["tagline"], REG, ACCENT)
-    p.space(15)
-    contact = f"{RESUME['email']}   ·   {RESUME['github']}   ·   {RESUME['linkedin']}   ·   {RESUME['location']}"
-    p.txt(MARGIN, 9, contact, REG, MUTED)
-    p.rule(gap=7, thickness=1.4, color=INK)
+    # ---------- header ----------
+    p.txt(MARGIN, 21, RESUME["name"], BOLD, INK)
+    p.space(19)
+    if RESUME.get("target"):
+        p.txt(MARGIN, 9.6, RESUME["target"], REG, ACCENT)
+        p.space(12)
+    p.space(2)
+    bits = [RESUME["location"], RESUME["phone"], RESUME["email"], RESUME["github"], RESUME["linkedin"]]
+    if RESUME.get("credly"):
+        bits.append(RESUME["credly"])
+    line = "   |   ".join(bits)
+    p.txt(MARGIN, 8.8, line, REG, MUTED)
+    p.rule(gap=6, thickness=1.3, color=INK)
 
-    # --- summary ---
-    h2(p, "Summary")
-    p.ensure(34)
-    for line in p.wrap(RESUME["summary"], 9.4, PAGE_W - MARGIN * 2):
-        p.txt(MARGIN, 9.4, line, REG, INK)
-        p.space(12.4)
+    # ---------- objective ----------
+    section(p, "Objective")
+    for line in p.wrap(RESUME["summary"], 9.3, PAGE_W - MARGIN * 2):
+        p.ensure(13)
+        p.txt(MARGIN, 9.3, line, REG, INK)
+        p.space(12.2)
 
-    # --- projects ---
-    h2(p, "Projects")
-    for pr in RESUME["projects"]:
-        project(p, pr)
-
-    # --- skills ---
-    h2(p, "Skills")
-    for cat, items in RESUME["skills"].items():
-        p.ensure(16)
-        p.txt(MARGIN, 9.3, cat.upper(), BOLD, INK)
-        p.txt(MARGIN + 120, 9.3, items, REG, INK)
-        p.space(13.5)
-
-    # --- education ---
-    h2(p, "Education")
+    # ---------- education ----------
+    section(p, "Education")
     for e in RESUME["education"]:
-        p.ensure(30)
-        p.txt(MARGIN, 10, e["degree"], BOLD, INK)
-        p.space(13)
+        entry_header(p, e["degree"], 10, e["meta"], 9)
+        right = e.get("grade", "")
+        w = p.width(right, 9, REG)
+        p.ensure(13)
         p.txt(MARGIN, 9.2, e["school"], REG, INK)
-        p.txt(PAGE_W - MARGIN, 9.2, e["meta"], REG, MUTED, dx=-p.width(e["meta"], 9.2), dy=0)
-        p.space(13)
+        if right:
+            p.txt(PAGE_W - MARGIN, 9.2, right, BOLD, INK, dx=-w)
+        p.space(11.5)
 
-    # --- extras ---
-    h2(p, "Additional")
-    for item in RESUME["extra"]:
-        bullet(p, item, size=9.1)
+    # ---------- experience ----------
+    section(p, "Internship Experience")
+    for x in RESUME["experience"]:
+        entry_header(p, x["role"], 10, x["meta"], 9)
+        p.txt(MARGIN, 9, x["org"], OBL, MUTED)
+        p.space(11)
+        for b in x["bullets"]:
+            bullet(p, b)
+        p.space(2)
+
+    # ---------- projects ----------
+    section(p, "Projects")
+    for pr in RESUME["projects"]:
+        entry_header(p, pr["name"], 10, pr["stack"], 8.2, right_color=MUTED)
+        for b in pr["bullets"]:
+            bullet(p, b)
+        p.space(2.5)
+
+    # ---------- skills ----------
+    section(p, "Technical Skills")
+    for cat, items in RESUME["skills"].items():
+        p.ensure(13)
+        p.txt(MARGIN, 9.2, cat, BOLD, INK)
+        p.txt(MARGIN + 110, 9.2, items, REG, INK)
+        p.space(12.6)
+
+    # ---------- certifications ----------
+    section(p, "Certifications")
+    for c in RESUME["certifications"]:
+        bullet(p, c, size=9.1)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_bytes(p.build())
-    print(f"wrote {OUT} ({OUT.stat().st_size} bytes) — RESUME button is now live")
+    print(f"wrote {OUT} ({OUT.stat().st_size} bytes) at y={p.y:.0f} (page bottom {MARGIN})")
 
 
 if __name__ == "__main__":

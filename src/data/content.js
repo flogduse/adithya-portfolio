@@ -8,9 +8,9 @@ export const profile = {
   name: ['ADITHYA', 'RAJESH'],
   role: 'AI Developer & Engineer',
   roles: ['Machine Learning', 'Computer Vision', 'Robotics', 'Web Systems'],
-  location: 'Trivandrum, India',
-  degree: "B.Tech CSE '29",
-  email: 'adithya.0987@gmail.com',
+  location: 'Kollam, Kerala, India',
+  degree: "B.Tech CS & AI '29 · CGPA 9.2",
+  email: 'adithya.r0987@gmail.com',
   github: 'https://github.com/flogduse',
   linkedin: 'https://www.linkedin.com/in/adithya-rajesh-4486453a2/',
   // TODO: drop your resume PDF at public/resume.pdf to activate the button

@@ -25,7 +25,7 @@ export default function Contact() {
       <footer className="footer">
         <span>© 2026 ADITHYA RAJESH</span>
         <span>BUILT LOUD. SHIPPED PROUD.</span>
-        <span>TVM, INDIA</span>
+        <span>KOLLAM, INDIA</span>
       </footer>
     </section>
   );
